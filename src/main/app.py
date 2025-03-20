@@ -12,7 +12,7 @@ def main():
     edge_browser.initialize()
 
     try:
-        edge_browser.get("https://www.youtube.com/")
+        edge_browser.open_url("https://www.youtube.com/")
         search_box = edge_browser.find_element(By.NAME, "search_query")
         search_box.send_keys("Selenium tutorials")
         search_box.submit()

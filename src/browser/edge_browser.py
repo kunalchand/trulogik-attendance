@@ -20,7 +20,7 @@ class EdgeBrowser:
         except Exception as e:
             raise BrowserException("Failed to initialize Edge browser") from e
 
-    def get(self, url):
+    def open_url(self, url):
         if not self.driver:
             raise BrowserException("Browser is not initialized")
         self.driver.get(url)
