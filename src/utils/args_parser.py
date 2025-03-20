@@ -9,6 +9,6 @@ class ArgsParser:
             elif sys.argv[1] == "-c":
                 return False
             else:
-                print("Invalid argument provided, closing browser...")
+                print("Invalid argument provided, shutting down the application...")
                 sys.exit(1)
         return False

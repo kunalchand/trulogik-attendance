@@ -18,7 +18,8 @@ def main():
         search_box.submit()
         print("YouTube opened successfully!")
     finally:
-        edge_browser.quit()
+        if not detach:  # Only quit if detach=False (-c argument)
+            edge_browser.quit()
 
 
 if __name__ == "__main__":
