@@ -1,4 +1,4 @@
-from src.browser.edge_browser import EdgeBrowser
+from src.browser.browser_factory import BrowserFactory
 from src.utils.args_parser import ArgsParser
 from config.settings import EDGE_DRIVER_PATH
 from selenium.webdriver.common.by import By
@@ -8,18 +8,20 @@ def main():
     args_parser = ArgsParser()
     detach = args_parser.parse_args()
 
-    edge_browser = EdgeBrowser(executable_path=EDGE_DRIVER_PATH, detach=detach)
-    edge_browser.initialize()
+    # Use the factory to create a browser instance.
+    # Dependency injection: main() depends only on the Browser interface.
+    browser = BrowserFactory.get_browser("edge", EDGE_DRIVER_PATH, detach)
+    browser.initialize()
 
     try:
-        edge_browser.open_url("https://www.youtube.com/")
-        search_box = edge_browser.find_element(By.NAME, "search_query")
+        browser.open_url("https://www.youtube.com/")
+        search_box = browser.find_element(By.NAME, "search_query")
         search_box.send_keys("Selenium tutorials")
         search_box.submit()
         print("YouTube opened successfully!")
     finally:
-        if not detach:  # Only quit if detach=False (-c argument)
-            edge_browser.quit()
+        if not detach:  # Only quit if detach=False (e.g., using -c argument)
+            browser.quit()
 
 
 if __name__ == "__main__":

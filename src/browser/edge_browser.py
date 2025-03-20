@@ -1,10 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
-from selenium.webdriver.common.by import By
+from src.browser.browser import Browser
 from src.exceptions.browser_exceptions import BrowserException
 
 
-class EdgeBrowser:
+class EdgeBrowser(Browser):
     def __init__(self, executable_path, detach=False):
         self.executable_path = executable_path
         self.detach = detach
@@ -20,7 +20,7 @@ class EdgeBrowser:
         except Exception as e:
             raise BrowserException("Failed to initialize Edge browser") from e
 
-    def open_url(self, url):
+    def open_url(self, url: str):
         if not self.driver:
             raise BrowserException("Browser is not initialized")
         self.driver.get(url)
