@@ -1,2 +1,0 @@
-class BrowserException(Exception):
-    pass
