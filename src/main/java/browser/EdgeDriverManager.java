@@ -3,7 +3,6 @@ package browser;
 import config.ConfigLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
 
 public class EdgeDriverManager {
     private WebDriver driver;
@@ -11,10 +10,7 @@ public class EdgeDriverManager {
     public WebDriver startDriver() {
         System.setProperty("webdriver.edge.driver", ConfigLoader.getEdgeDriverPath());
         
-        EdgeOptions options = new EdgeOptions();
-        options.setExperimentalOption("detach", ConfigLoader.getBrowserOptions());
-        
-        driver = new EdgeDriver(options);
+        driver = new EdgeDriver();
         return driver;
     }
 

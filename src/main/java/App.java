@@ -1,11 +1,13 @@
 import browser.Browser;
 import browser.BrowserFactory;
+import config.ConfigLoader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class App {
     public static void main(String[] args) {
-        // Use the factory to create a browser instance
+        ConfigLoader.init(args);
+        
         Browser browser = BrowserFactory.getBrowser("edge");
         browser.initialize();
 
@@ -16,7 +18,9 @@ public class App {
             searchBox.submit();
             System.out.println("YouTube opened successfully!");
         } finally {
-            System.out.println("End of commands");
+            if (!ConfigLoader.getBrowserOpenStatus()){
+                browser.quit();
+            }
         }
     }
 }
