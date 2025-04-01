@@ -1,5 +1,6 @@
 package browser;
 
+import config.AppConfig;
 import exceptions.BrowserException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,9 +18,9 @@ public class EdgeBrowser implements Browser {
     }
 
     @Override
-    public void initialize() {
+    public void initialize(AppConfig appConfig) {
         try {
-            this.driver = edgeDriverManager.startDriver();
+            this.driver = edgeDriverManager.startDriver(appConfig);
             this.page = new EdgePageInteractor(driver);
         } catch (Exception e) {
             throw new BrowserException("Failed to initialize Edge browser", e);

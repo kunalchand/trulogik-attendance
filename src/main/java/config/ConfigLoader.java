@@ -3,17 +3,13 @@ package config;
 import utils.ArgsParser;
 
 public class ConfigLoader {
-    private static String[] args;
+    private AppConfig appConfig;
 
-    public static void init(String[] arguments) {
-        args = arguments;
+    public ConfigLoader(String[] arguments) {
+        appConfig = new AppConfig(Settings.EDGE_DRIVER_PATH, new ArgsParser().parseArgs(arguments));
     }
 
-    public static String getEdgeDriverPath() {
-        return Settings.EDGE_DRIVER_PATH;
-    }
-
-    public static boolean getBrowserOpenStatus() {
-        return new ArgsParser().parseArgs(args);
+    public AppConfig loadConfiguration() {
+        return appConfig;
     }
 }
