@@ -4,7 +4,7 @@ import config.ConfigLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
-public class EdgeDriverManager {
+public class EdgeDriverManager implements DriverManager {
     private WebDriver driver;
 
     public WebDriver startDriver() {

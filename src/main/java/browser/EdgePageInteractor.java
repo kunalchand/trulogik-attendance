@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class EdgePageInteractor {
+public class EdgePageInteractor implements PageInteractor {
     private final WebDriver driver;
 
     public EdgePageInteractor(WebDriver driver) {
